@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Instagram</string>
+
+    <string name="email">E-mail</string>
+    <string name="passw">Senha</string>
+
+    <string name="enter">Entrar</string>
+
+</resources>

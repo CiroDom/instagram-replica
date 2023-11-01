@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingHorizontal="36dp"
+    android:orientation="vertical"
+    tools:context=".ui.login.LoginActivity">
+
+    <ImageView android:id="@+id/login_img_logo"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginBottom="60dp"
+        android:src="@drawable/instagram_logo_black"/>
+
+    <EditText android:id="@+id/login_edit_email"
+        style="@style/Theme.Instagram.FormEditText"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"/>
+
+    <EditText android:id="@+id/login_edit_passw"
+        style="@style/Theme.Instagram.FormEditText"
+        android:hint="@string/passw"
+        android:inputType="textPassword"/>
+
+    <Button android:id="@+id/login_button_enter"
+        style="@style/Theme.Instagram.FormEnterButton"/>
+
+</LinearLayout>
