@@ -5,5 +5,10 @@
     <string name="passw">Senha</string>
 
     <string name="enter">Entrar</string>
+    <string name="signup">Não tem uma conta? 
+        <b>
+            <font color="#000000">Cadastre-se</font>
+        </b>
+    </string>
 
 </resources>

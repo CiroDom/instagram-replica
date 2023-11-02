@@ -1,30 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingHorizontal="36dp"
-    android:orientation="vertical"
+    android:background="@color/white"
     tools:context=".ui.login.LoginActivity">
 
-    <ImageView android:id="@+id/login_img_logo"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
-        android:src="@drawable/instagram_logo_black"/>
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.35"
+        android:orientation="vertical">
 
-    <EditText android:id="@+id/login_edit_email"
-        style="@style/Theme.Instagram.FormEditText"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"/>
+        <ImageView android:id="@+id/login_img_logo"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginBottom="60dp"
+            android:src="@drawable/instagram_logo_black"/>
 
-    <EditText android:id="@+id/login_edit_passw"
-        style="@style/Theme.Instagram.FormEditText"
-        android:hint="@string/passw"
-        android:inputType="textPassword"/>
+        <EditText android:id="@+id/login_edit_email"
+            style="@style/Theme.Instagram.FormEditText"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"/>
 
-    <Button android:id="@+id/login_button_enter"
-        style="@style/Theme.Instagram.FormEnterButton"/>
+        <EditText android:id="@+id/login_edit_passw"
+            style="@style/Theme.Instagram.FormEditText"
+            android:hint="@string/passw"
+            android:inputType="textPassword"/>
 
-</LinearLayout>
+        <Button android:id="@+id/login_button_enter"
+            style="@style/Theme.Instagram.FormEnterButton"/>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <View android:id="@+id/login_view_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_gravity="center"
+                android:background="@color/gray_border"/>
+
+            <TextView android:id="@+id/login_txt_oder"
+                android:text="ou"
+                style="@style/Theme.Instagram.TextViewBase"
+                android:padding="8dp"
+                android:layout_gravity="center"
+                android:background="@color/white"/>
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <TextView android:id="@+id/login_txt_signup"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:paddingBottom="24dp"
+        android:text="@string/signup"
+        android:textAlignment="center"
+        style="@style/Theme.Instagram.TextViewBase"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
