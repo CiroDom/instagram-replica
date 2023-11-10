@@ -14,7 +14,7 @@
     <color name="gray_text">#999999</color>
 
 
-    <color name="blue_disabled">#C30FA</color>
+    <color name="blue_disabled">#C3E0FA</color>
     <color name="blue_enabled">#3897F0</color>
 
 </resources>

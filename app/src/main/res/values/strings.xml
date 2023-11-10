@@ -5,10 +5,9 @@
     <string name="passw">Senha</string>
 
     <string name="enter">Entrar</string>
-    <string name="signup">Não tem uma conta? 
-        <b>
-            <font color="#000000">Cadastre-se</font>
-        </b>
-    </string>
+    <string name="signup">Não tem uma conta? <b><font color="#000000">Cadastre-se</font></b></string>
+
+    <string name="error_email">Esse e-mail é inválido</string>
+    <string name="error_passw">Essa senha é inválida</string>
 
 </resources>

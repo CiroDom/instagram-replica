@@ -8,54 +8,82 @@
     android:background="@color/white"
     tools:context=".ui.login.LoginActivity">
 
-    <LinearLayout
+    <ScrollView android:id="@+id/login_scroll_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintVertical_bias="0.35"
-        android:orientation="vertical">
+        app:layout_constraintVertical_bias="0.35">
 
-        <ImageView android:id="@+id/login_img_logo"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="60dp"
-            android:src="@drawable/instagram_logo_black"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <EditText android:id="@+id/login_edit_email"
-            style="@style/Theme.Instagram.FormEditText"
-            android:hint="@string/email"
-            android:inputType="textEmailAddress"/>
-
-        <EditText android:id="@+id/login_edit_passw"
-            style="@style/Theme.Instagram.FormEditText"
-            android:hint="@string/passw"
-            android:inputType="textPassword"/>
-
-        <Button android:id="@+id/login_button_enter"
-            style="@style/Theme.Instagram.FormEnterButton"/>
-
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <View android:id="@+id/login_view_line"
+            <ImageView android:id="@+id/login_img_logo"
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_gravity="center"
-                android:background="@color/gray_border"/>
+                android:layout_height="60dp"
+                android:layout_marginBottom="60dp"
+                android:src="@drawable/instagram_logo_black"/>
 
-            <TextView android:id="@+id/login_txt_oder"
-                android:text="ou"
-                style="@style/Theme.Instagram.TextViewBase"
-                android:padding="8dp"
-                android:layout_gravity="center"
-                android:background="@color/white"/>
-        </FrameLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_inputlay_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Theme.Instagram.FormInputText">
 
-    </LinearLayout>
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_edit_email"
+                    style="@style/Theme.Instagram.FormEditText"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_inputlay_passw"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Theme.Instagram.FormInputText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/login_edit_passw"
+                style="@style/Theme.Instagram.FormEditText"
+                android:hint="@string/passw"
+                android:inputType="textPassword"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <co.tiagoaguiar.course.instagram.ui.login.LoadingButton
+                android:id="@+id/login_button_enter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:text="@string/enter"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <View android:id="@+id/login_view_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:background="@color/gray_border"/>
+
+                <TextView android:id="@+id/login_txt_oder"
+                    android:text="ou"
+                    style="@style/Theme.Instagram.TextViewBase"
+                    android:padding="8dp"
+                    android:layout_gravity="center"
+                    android:background="@color/white"/>
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
     <TextView android:id="@+id/login_txt_signup"
         android:layout_width="0dp"
@@ -64,6 +92,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:paddingBottom="24dp"
+        android:background="@color/white"
         android:text="@string/signup"
         android:textAlignment="center"
         style="@style/Theme.Instagram.TextViewBase"/>
