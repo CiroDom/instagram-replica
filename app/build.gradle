@@ -34,6 +34,7 @@ android {
     buildFeatures {
         viewBinding true
     }
+    namespace 'co.tiagoaguiar.course.instagram'
 }
 
 dependencies {

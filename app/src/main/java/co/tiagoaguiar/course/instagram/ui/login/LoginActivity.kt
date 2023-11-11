@@ -47,9 +47,9 @@ class LoginActivity : AppCompatActivity() {
 
     buttonEnter.setOnClickListener {
 
-      inputEmail.error = getString(R.string.error_email)
+      inputEmail.error = getString(R.string.invalid_email)
 
-      inputPassw.error = getString(R.string.error_passw)
+      inputPassw.error = getString(R.string.password_not_equal)
 
     }
 
