@@ -5,9 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.FragSignUpNameBinding
 import co.tiagoaguiar.course.instagram.databinding.FragSignUpPhotoBinding
 import co.tiagoaguiar.course.instagram.databinding.FragSignUpWelcomeBinding
+import co.tiagoaguiar.course.instagram.ui.common.OurDialog
 
 class SignUpPhotoFrag : Fragment() {
 
@@ -25,6 +27,14 @@ class SignUpPhotoFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val ourDialog = OurDialog(requireContext())
+        ourDialog.show()
+        ourDialog.addOption(
+            R.string.photo,
+            R.string.gallery,) {
+
+        }
     }
 
 }
