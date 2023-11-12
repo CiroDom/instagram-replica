@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:showIn="@layout/activity_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/proffrag_circleimg_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_insta_profile_thin"
+        app:civ_circle_background_color="@color/gray"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/gray"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/proffrag_circleimg_add_photo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintBottom_toBottomOf="@id/proffrag_circleimg_icon"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_insta_add_profile"
+        app:civ_circle_background_color="@color/blue_enabled"
+        app:civ_border_width="1dp"
+        app:civ_border_color="@color/white"/>
+    
+    <TextView android:id="@+id/proffrag_txt_count_post"
+        style="@style/Theme.Instagram.TextViewProfile.Count"
+        app:layout_constraintStart_toEndOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintTop_toTopOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintEnd_toStartOf="@id/proffrag_txt_count_follower"
+        android:text="0"/>
+
+    <TextView android:id="@+id/proffrag_txt_count_follower"
+        style="@style/Theme.Instagram.TextViewProfile.Count"
+        app:layout_constraintStart_toEndOf="@id/proffrag_txt_count_post"
+        app:layout_constraintTop_toTopOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintEnd_toStartOf="@id/proffrag_txt_count_following"
+        android:text="0"/>
+
+    <TextView android:id="@+id/proffrag_txt_count_following"
+        style="@style/Theme.Instagram.TextViewProfile.Count"
+        app:layout_constraintStart_toEndOf="@id/proffrag_txt_count_follower"
+        app:layout_constraintTop_toTopOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="0"/>
+
+    <TextView android:id="@+id/proffrag_txt_post"
+        style="@style/Theme.Instagram.TextViewProfile"
+        app:layout_constraintStart_toEndOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_count_post"
+        app:layout_constraintEnd_toStartOf="@id/proffrag_txt_followers"
+        android:text="@string/posts"/>
+
+    <TextView android:id="@+id/proffrag_txt_followers"
+        style="@style/Theme.Instagram.TextViewProfile"
+        app:layout_constraintStart_toEndOf="@id/proffrag_txt_count_post"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_count_follower"
+        app:layout_constraintEnd_toStartOf="@id/proffrag_txt_following"
+        android:text="@string/followers"/>
+
+    <TextView android:id="@+id/proffrag_txt_following"
+        style="@style/Theme.Instagram.TextViewProfile"
+        app:layout_constraintStart_toEndOf="@id/proffrag_txt_count_follower"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_count_following"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="@string/following"/>
+
+    <Button android:id="@+id/proffrag_button_edit_perfil"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Instagram.Button.White"
+        app:layout_constraintStart_toStartOf="@id/proffrag_txt_post"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_post"
+        app:layout_constraintEnd_toEndOf="@id/proffrag_txt_following"
+        android:text="@string/edit_profile"/>
+
+
+    <TextView android:id="@+id/proffrag_txt_username"
+        android:layout_width="wrap_content"
+        style="@style/Theme.Instagram.TextViewProfile.Count"
+        app:layout_constraintStart_toStartOf="@id/proffrag_circleimg_icon"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_circleimg_icon"
+        android:layout_marginTop="32dp"
+        android:text="@string/username"/>
+
+    <TextView android:id="@+id/proffrag_txt_desc"
+        android:layout_width="wrap_content"
+        style="@style/Theme.Instagram.TextViewProfile"
+        app:layout_constraintStart_toStartOf="@id/proffrag_txt_username"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_username"
+        android:text="text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text text "
+        android:textAlignment="textStart"
+        android:maxLines="3"
+        android:ellipsize="marquee" />
+    
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/proffrag_botnav_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_txt_desc"
+        android:background="@drawable/top_bottom_border"
+        app:menu="@menu/profile_nav_menu"
+        app:labelVisibilityMode="unlabeled"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/proffrag_recyview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/proffrag_botnav_tabs"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:listitem="@layout/item_proffrag_grid"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
