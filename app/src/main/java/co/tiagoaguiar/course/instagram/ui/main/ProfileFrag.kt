@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.GridLayoutManager
 import co.tiagoaguiar.course.instagram.databinding.FragProfileBinding
 
 class ProfileFrag : Fragment() {
@@ -22,6 +23,13 @@ class ProfileFrag : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val recyView = binding.proffragRecyview
+        with(recyView) {
+            layoutManager = GridLayoutManager(requireContext(), 3)
+            adapter = PostAdapter()
+        }
+
     }
 
 }
