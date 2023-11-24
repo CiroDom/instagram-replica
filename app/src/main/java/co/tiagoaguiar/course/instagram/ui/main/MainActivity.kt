@@ -13,5 +13,14 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        val toolbar = binding.mainToolbar
+        setSupportActionBar(toolbar)
+
+        with(supportActionBar!!) {
+            setHomeAsUpIndicator(R.drawable.camera_icon)
+            setDisplayHomeAsUpEnabled(true)
+            title = ""
+        }
     }
 }

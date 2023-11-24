@@ -2,10 +2,13 @@ package co.tiagoaguiar.course.instagram.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.FragProfileBinding
 
 class ProfileFrag : Fragment() {
@@ -30,6 +33,16 @@ class ProfileFrag : Fragment() {
             adapter = PostAdapter()
         }
 
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.profile_dot_menu, menu)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 
 }
