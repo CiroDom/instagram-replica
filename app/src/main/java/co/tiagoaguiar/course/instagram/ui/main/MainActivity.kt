@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         with(supportActionBar!!) {
-            setHomeAsUpIndicator(R.drawable.camera_icon)
+            setHomeAsUpIndicator(R.drawable.ic_insta_camera)
             setDisplayHomeAsUpEnabled(true)
             title = ""
         }

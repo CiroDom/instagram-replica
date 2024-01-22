@@ -66,7 +66,12 @@
         <item name="backgroundTint">@color/white</item>
         <item name="android:textColor">@color/black</item>
         <item name="textAllCaps">false</item>
+    </style>
 
+    <style name="Theme.Instagram.LittleIcons">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginEnd">8dp</item>
     </style>
 
 </resources>
