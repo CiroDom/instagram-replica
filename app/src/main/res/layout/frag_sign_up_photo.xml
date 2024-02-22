@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="36dp"
     android:background="@color/white"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.views.login.LoginActivity">
 
     <LinearLayout
         android:layout_width="0dp"
@@ -37,7 +37,7 @@
             android:layout_gravity="center"
             android:textColor="@color/black"/>
 
-        <co.tiagoaguiar.course.instagram.ui.login.LoadingButton
+        <co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
             android:id="@+id/sign_up_button_next_photo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

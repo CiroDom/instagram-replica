@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="36dp"
     android:background="@color/white"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.views.login.LoginActivity">
 
     <ScrollView android:id="@+id/login_scroll_view"
         android:layout_width="0dp"
@@ -33,7 +33,7 @@
                 style="@style/Theme.Instagram.TextViewBase.Form"
                 android:text="@string/welcome_to_instagram"/>
 
-            <co.tiagoaguiar.course.instagram.ui.login.LoadingButton
+            <co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
                 android:id="@+id/sign_up_button_next_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

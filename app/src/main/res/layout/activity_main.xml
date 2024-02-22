@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.views.main.MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
-            android:name="co.tiagoaguiar.course.instagram.ui.camera.GalleryFrag"
+            android:name="co.tiagoaguiar.course.instagram.ui.views.home.HomeFrag"
             tools:layout="@layout/frag_gallery"/>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

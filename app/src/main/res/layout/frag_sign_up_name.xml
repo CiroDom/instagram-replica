@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingHorizontal="36dp"
     android:background="@color/white"
-    tools:context=".ui.login.LoginActivity">
+    tools:context=".ui.views.login.LoginActivity">
 
     <ScrollView android:id="@+id/login_scroll_view"
         android:layout_width="0dp"
@@ -23,20 +23,20 @@
             android:paddingBottom="70dp"
             android:orientation="vertical">
 
-            <ImageView
+            <ImageView android:id="@+id/sign_up_img"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginBottom="150dp"
                 android:src="@drawable/photo_icon"/>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_inputlay_name"
+                android:id="@+id/sign_up_inputlay_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Theme.Instagram.FormInputText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_edit_name"
+                    android:id="@+id/sign_up_edit_name"
                     style="@style/Theme.Instagram.FormEditText"
                     android:hint="@string/name"
                     android:inputType="textPersonName"/>
@@ -44,13 +44,13 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_inputlay_passw"
+                android:id="@+id/sign_up_inputlay_passw"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Theme.Instagram.FormInputText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_edit_passw"
+                    android:id="@+id/sign_up_edit_passw"
                     style="@style/Theme.Instagram.FormEditText"
                     android:hint="@string/password"
                     android:inputType="textPassword"/>
@@ -58,20 +58,20 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/login_inputlay_passw_confirm"
+                android:id="@+id/sign_up_inputlay_passw_confirm"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 style="@style/Theme.Instagram.FormInputText">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/login_edit_passw_confirm"
+                    android:id="@+id/sign_up_edit_passw_confirm"
                     style="@style/Theme.Instagram.FormEditText"
                     android:hint="@string/password_confirm"
                     android:inputType="textPassword"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <co.tiagoaguiar.course.instagram.ui.login.LoadingButton
+            <co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
                 android:id="@+id/sign_up_button_next_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,17 +80,5 @@
         </LinearLayout>
 
     </ScrollView>
-
-    <TextView android:id="@+id/login_txt_has_account"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:paddingBottom="24dp"
-        android:background="@color/white"
-        android:text="@string/already_has_account"
-        android:textAlignment="center"
-        style="@style/Theme.Instagram.TextViewBase"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
