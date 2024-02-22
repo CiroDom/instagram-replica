@@ -28,8 +28,10 @@
     <string name="edit_profile">Editar perfil</string>
     <string name="username">username</string>
     <string name="invalid_email">Email inválido</string>
+    <string name="invalid_name">Nome deve ter no mínimo 2 caracteres</string>
     <string name="invalid_passw">Senha inválida</string>
-    <string name="password_not_equal">Senha e confirmar senha devem ser iguais.</string>
+    <string name="invalid_passw_short">Senha deve ter no mínimo 8 caracteres</string>
+    <string name="password_not_equal">Senha e confirmação da senha devem ser iguais.</string>
     <string name="save">Salvar</string>
     <string name="title_activity_add">AddActivity</string>
     <string name="photo">Foto</string>

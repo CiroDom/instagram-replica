@@ -6,8 +6,11 @@ class SignUpRepository(
     private val dataSource: FakeSignUpDataSource
 ) {
 
-    fun create(userData: String, callback: SignUpCallback) {
-        dataSource.create(userData, callback)
+    fun passEmail(email: String, callback: SignUpCallback) {
+        dataSource.passEmail(email, callback)
     }
 
+    fun create(email: String, passw: String, name: String, callback: SignUpCallback) {
+        dataSource.create(email, passw, name, callback)
+    }
 }

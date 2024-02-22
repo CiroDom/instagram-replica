@@ -9,8 +9,8 @@ object Database {
 
     var sessionAuth: UserAuth? = null
     init {
-        usersAuth.add(UserAuth(UUID.randomUUID().toString(), "user@user.com", "12345678"))
-        usersAuth.add(UserAuth(UUID.randomUUID().toString(), "userother@user.com", "123456789"))
+        usersAuth.add(UserAuth(UUID.randomUUID().toString(), "João", "user@user.com", "12345678", ))
+        usersAuth.add(UserAuth(UUID.randomUUID().toString(), "Pedro", "userother@user.com", "123456789"))
     }
 
 }

@@ -1,6 +1,5 @@
 package co.tiagoaguiar.course.instagram.core.signup.presentation
 
-import android.util.Log
 import android.util.Patterns
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.core.commons.BasePresenter
@@ -20,7 +19,7 @@ class SignUpEmailPresenter(
         if (isEmailValid) {
             view?.displayFailure(null, view!!.editEmail)
 
-            repository.create(email, object : SignUpCallback {
+            repository.passEmail(email, object : SignUpCallback {
                 override fun onSucess() {
                     view?.goToNameAndPassw(email)
                 }
