@@ -4,5 +4,6 @@ data class UserAuth(
     val uuid: String,
     val name: String,
     val email: String,
-    val passw: String
+    val passw: String,
+    var photo: ByteArray?
 )

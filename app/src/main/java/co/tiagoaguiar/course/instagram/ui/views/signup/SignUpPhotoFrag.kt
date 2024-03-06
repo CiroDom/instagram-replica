@@ -1,10 +1,9 @@
 package co.tiagoaguiar.course.instagram.ui.views.signup
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.FragSignUpPhotoBinding
@@ -14,6 +13,8 @@ class SignUpPhotoFrag : Fragment(R.layout.frag_sign_up_photo) {
 
     private var binding: FragSignUpPhotoBinding? = null
 
+    private var signUpActivity: SignUpActivity? = null
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -22,7 +23,7 @@ class SignUpPhotoFrag : Fragment(R.layout.frag_sign_up_photo) {
         val ourDialog = OurDialog(requireContext())
 
         with(ourDialog) {
-            addOption(R.string.photo, R.string.gallery,) {
+            addOptions(R.string.photo, R.string.gallery,) {
                 when (it.id) {
                     R.string.photo -> {
                         Log.i("Teste", "foto")
@@ -35,6 +36,14 @@ class SignUpPhotoFrag : Fragment(R.layout.frag_sign_up_photo) {
             show()
         }
 
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is SignUpActivity) {
+            signUpActivity = context
+        }
     }
 
     override fun onDestroy() {

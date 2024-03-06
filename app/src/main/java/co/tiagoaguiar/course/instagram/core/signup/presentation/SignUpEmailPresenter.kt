@@ -13,7 +13,7 @@ class SignUpEmailPresenter(
         view = null
     }
 
-    fun create(email: String) {
+    fun create(email: String, photo: ByteArray? = null) {
         val isEmailValid = Patterns.EMAIL_ADDRESS.matcher(email).matches()
 
         if (isEmailValid) {

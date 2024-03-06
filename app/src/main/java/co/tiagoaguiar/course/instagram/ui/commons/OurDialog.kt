@@ -3,9 +3,11 @@ package co.tiagoaguiar.course.instagram.ui.commons
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.annotation.StringRes
 import co.tiagoaguiar.course.instagram.databinding.DialogOurBinding
 
 class OurDialog(context: Context) : Dialog(context) {
@@ -22,9 +24,9 @@ class OurDialog(context: Context) : Dialog(context) {
         bindind.dialogourTxtTitle
     }
 
-    private lateinit var txtOptions: Array<TextView>
+    private lateinit var optionTxts: Array<TextView>
 
-    private var titleId: Int? = null
+    private var idTitle: Int? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -35,7 +37,11 @@ class OurDialog(context: Context) : Dialog(context) {
     override fun show() {
         super.show()
 
-        for (textView in txtOptions) {
+        idTitle?.let { id ->
+            titleTxt.setText(id)
+        }
+
+        for (textView in optionTxts) {
             val layParams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
@@ -44,25 +50,22 @@ class OurDialog(context: Context) : Dialog(context) {
 
             dialogLinearLay.addView(textView, layParams)
         }
-
-        titleId?.let {id ->
-            titleTxt.setText(id)
-        }
     }
 
-    fun addOption(vararg texts: Int, listener: View.OnClickListener) {
-        txtOptions = Array(texts.size) {
+    fun addOptions(@StringRes vararg textIds: Int, listener: View.OnClickListener) {
+        optionTxts = Array(textIds.size) {
             TextView(context)
         }
-        texts.forEachIndexed { index, txtId ->
-            with(txtOptions[index]) {
+
+        textIds.forEachIndexed { index, txtId ->
+            optionTxts[index].apply {
                 setText(txtId)
                 setOnClickListener {
+                    Log.i("Teste", "setOnClick")
                     listener.onClick(it)
                     dismiss()
                 }
             }
         }
     }
-
 }

@@ -10,7 +10,7 @@ class SignUpRepository(
         dataSource.passEmail(email, callback)
     }
 
-    fun create(email: String, passw: String, name: String, callback: SignUpCallback) {
-        dataSource.create(email, passw, name, callback)
+    fun create(email: String, passw: String, name: String, photo: ByteArray? = null, callback: SignUpCallback) {
+        dataSource.create(email, passw, name, photo, callback)
     }
 }

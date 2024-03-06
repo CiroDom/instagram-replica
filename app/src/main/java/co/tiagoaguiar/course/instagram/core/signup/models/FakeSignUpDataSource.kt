@@ -21,14 +21,14 @@ class FakeSignUpDataSource {
         callback.onComplete()
     }
 
-    fun create(email: String, passw: String, name: String, callback: SignUpCallback) {
-        val wasCreated = Database.usersAuth.add(
-            UserAuth(
-                UUID.randomUUID().toString(),
-                name,
-                email,
-                passw,)
-        )
+    fun create(email: String, passw: String, name: String, photo: ByteArray?, callback: SignUpCallback) {
+        val newUser = UserAuth(
+            UUID.randomUUID().toString(),
+            name,
+            email,
+            passw,
+            photo)
+        val wasCreated = Database.usersAuth.add(newUser)
 
         if (wasCreated) {
             callback.onSucess()

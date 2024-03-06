@@ -1,18 +1,26 @@
 package co.tiagoaguiar.course.instagram.ui.views.signup
 
+import android.content.Intent
+import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.ActivitySignUpBinding
 import co.tiagoaguiar.course.instagram.ui.commons.Keys
+import co.tiagoaguiar.course.instagram.ui.interfaces.FragReplacer
 import co.tiagoaguiar.course.instagram.ui.interfaces.KeyboardHider
+import co.tiagoaguiar.course.instagram.ui.views.main.MainActivity
 
-class SignUpActivity : AppCompatActivity(), KeyboardHider, SignUpFragAttListener {
+class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer {
 
     private val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
     }
+
+    private var photoInBitmap: Bitmap? = null
+
+    val fragId = R.id.sign_up_frag
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -20,36 +28,49 @@ class SignUpActivity : AppCompatActivity(), KeyboardHider, SignUpFragAttListener
         keyboardHiding(this, binding.root)
 
         val emailFrag = SignUpEmailFrag()
-        replaceFrag(emailFrag)
+        replaceFrag(this, emailFrag, fragId)
 
         binding.signUpTxtHasAlreadyAccount.setOnClickListener {
             finish()
         }
     }
 
-    private fun replaceFrag(frag: Fragment) {
-        if (supportFragmentManager.findFragmentById(R.id.sign_up_frag) == null) {
-            supportFragmentManager.beginTransaction().apply {
-                add(R.id.sign_up_frag, frag)
-                commit()
-            }
-        }
-        else {
-            supportFragmentManager.beginTransaction().apply {
-                replace(R.id.sign_up_frag, frag)
-                addToBackStack(null)
-                commit()
-            }
-        }
+    fun bitmapToActv(bitmap: Bitmap?) {
+        photoInBitmap = bitmap
     }
 
-    override fun goToNameAndPassw(email: String) {
+    fun goToNameAndPassw(email: String, photo: ByteArray? = null) {
         val bundle = Bundle()
         bundle.putString(Keys.EMAIL_SIGN_UP, email)
+
+        if (photo != null) {
+            bundle.putByteArray(Keys.PHOTO_SIGN_UP, photo)
+        }
 
         val nameFrag = SignUpNameFrag()
         nameFrag.arguments = bundle
 
-        replaceFrag(nameFrag)
+        replaceFrag(this, nameFrag, fragId)
+    }
+
+    fun goToWelcome(name: String) {
+        val bundle = Bundle()
+        bundle.putString(Keys.NAME_SIGN_UP, name)
+
+        val welcomeFrag = SignUpWelcomeFrag()
+        welcomeFrag.arguments = bundle
+
+        replaceFrag(this, welcomeFrag, fragId)
+    }
+
+    fun goToPhoto() {
+        val photoFrag = SignUpPhotoFrag()
+        replaceFrag(this, photoFrag, fragId)
+    }
+
+    fun goToMain() {
+        val intent = Intent(this, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
     }
 }

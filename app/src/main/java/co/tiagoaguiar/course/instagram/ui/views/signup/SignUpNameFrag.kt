@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.ui.views.signup
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
@@ -21,7 +22,7 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
 
     private var binding: FragSignUpNameBinding? = null
 
-    private var fragAttListener: SignUpFragAttListener? = null
+    private var signUpActivity: SignUpActivity? = null
 
     private lateinit var presenter: SignUpNamePresenter
 
@@ -52,7 +53,8 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
         presenter = SignUpNamePresenter(this, repo)
 
         binding!!.signUpImg.setOnClickListener {
-            photoChangerDialog(requireContext())
+            val actv = activity as SignUpActivity
+            photoChangerDialog(actv, actv.fragId)
         }
 
         editName = binding!!.signUpEditName
@@ -93,16 +95,24 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
 
     override fun onDestroy() {
         binding = null
-        fragAttListener = null
+        signUpActivity = null
         presenter.onDestroy()
         super.onDestroy()
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is SignUpActivity) {
+            signUpActivity = context
+        }
     }
 
     fun onFailure(msg: String) {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
-    fun onSuccCreation() {
-
+    fun onSuccCreation(name: String) {
+        signUpActivity?.goToWelcome(name)
     }
 }

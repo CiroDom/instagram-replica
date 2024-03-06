@@ -9,7 +9,7 @@ class SignUpNamePresenter(
     private val view: SignUpNameFrag?,
     private val repository: SignUpRepository) : BasePresenter {
 
-    fun create(email: String, name: String, passw: String, confirmPassw: String) {
+    fun create(email: String, name: String, passw: String, confirmPassw: String, photo: ByteArray? = null) {
         val notValidName = name.length < 2
         val tooShortPassw = passw.length < 8
         val notEqualPassw = passw != confirmPassw
@@ -34,9 +34,9 @@ class SignUpNamePresenter(
 
         view?.showProg(true, view.createButton)
 
-        repository.create(email, passw, name, object : SignUpCallback {
+        repository.create(email, passw, name, photo, object : SignUpCallback {
             override fun onSucess() {
-                view?.onSuccCreation()
+                view?.onSuccCreation(name)
             }
 
             override fun onFailure(msg: String) {
@@ -51,10 +51,6 @@ class SignUpNamePresenter(
     }
 
     override fun onDestroy() {
-        TODO("Not yet implemented")
+
     }
-
-
-
-
 }
