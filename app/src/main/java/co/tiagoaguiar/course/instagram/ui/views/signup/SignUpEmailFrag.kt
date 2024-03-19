@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
@@ -19,16 +18,17 @@ import co.tiagoaguiar.course.instagram.databinding.FragSignUpEmailBinding
 import co.tiagoaguiar.course.instagram.ui.commons.Keys
 import co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
 import co.tiagoaguiar.course.instagram.ui.commons.OurTextWatcher
-import co.tiagoaguiar.course.instagram.ui.interfaces.KeyboardHider
-import co.tiagoaguiar.course.instagram.ui.interfaces.PhotoChanger
+import co.tiagoaguiar.course.instagram.core.commons.PhotoChanger
 import co.tiagoaguiar.course.instagram.ui.interfaces.User
 import de.hdodenhof.circleimageview.CircleImageView
 
-class SignUpEmailFrag : Fragment(), PhotoChanger, User {
+class SignUpEmailFrag : Fragment(), User {
 
     private var binding: FragSignUpEmailBinding? = null
 
     private var signUpActivity: SignUpActivity? = null
+
+    private var photoChanger: PhotoChanger? = PhotoChanger()
 
     private lateinit var presenter: SignUpEmailPresenter
 
@@ -37,19 +37,6 @@ class SignUpEmailFrag : Fragment(), PhotoChanger, User {
     lateinit var editEmail: EditText
 
     lateinit var button: LoadingButton
-
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        binding = FragSignUpEmailBinding.inflate(layoutInflater)
-//
-//        imgView = binding?.signUpImgIcon!!
-//
-//        setFragmentResultListener(Keys.CROP) { requestKey, bundle ->
-//            val uri = bundle.getParcelable<Uri>(Keys.URI)
-//            onCropImgResult(requireContext(), uri)
-//        }
-//    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -62,7 +49,8 @@ class SignUpEmailFrag : Fragment(), PhotoChanger, User {
 
         setFragmentResultListener(Keys.CROP) { requestKey, bundle ->
             val uri = bundle.getParcelable<Uri>(Keys.URI)
-            val bitmap = onCropImgResult(requireContext(), uri)
+            val bitmap = photoChanger?.onCropImgResult(requireContext(), uri)
+            signUpActivity?.photoInBitmap = bitmap
             imgView.setImageBitmap(bitmap)
         }
 
@@ -88,7 +76,7 @@ class SignUpEmailFrag : Fragment(), PhotoChanger, User {
 
         imgView.setOnClickListener {
             val actv = activity as SignUpActivity
-            photoChangerDialog(actv, actv.fragId)
+            photoChanger?.photoChangerDialog(actv, actv.getContent, actv.getCamera, actv::getUri)
         }
 
         val watcher = OurTextWatcher {
@@ -109,6 +97,7 @@ class SignUpEmailFrag : Fragment(), PhotoChanger, User {
     override fun onDestroy() {
         binding = null
         signUpActivity = null
+        photoChanger = null
         presenter.onDestroy()
         super.onDestroy()
     }

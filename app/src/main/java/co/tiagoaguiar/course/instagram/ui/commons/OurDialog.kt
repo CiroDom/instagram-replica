@@ -3,7 +3,6 @@ package co.tiagoaguiar.course.instagram.ui.commons
 import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -52,16 +51,16 @@ class OurDialog(context: Context) : Dialog(context) {
         }
     }
 
-    fun addOptions(@StringRes vararg textIds: Int, listener: View.OnClickListener) {
-        optionTxts = Array(textIds.size) {
+    fun addOptions(@StringRes vararg textStrings: Int, listener: View.OnClickListener) {
+        optionTxts = Array(textStrings.size) {
             TextView(context)
         }
 
-        textIds.forEachIndexed { index, txtId ->
+        textStrings.forEachIndexed { index, textString ->
             optionTxts[index].apply {
-                setText(txtId)
+                id = textString
+                setText(textString)
                 setOnClickListener {
-                    Log.i("Teste", "setOnClick")
                     listener.onClick(it)
                     dismiss()
                 }

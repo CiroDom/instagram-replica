@@ -14,15 +14,17 @@ import co.tiagoaguiar.course.instagram.databinding.FragSignUpNameBinding
 import co.tiagoaguiar.course.instagram.ui.commons.Keys
 import co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
 import co.tiagoaguiar.course.instagram.ui.commons.OurTextWatcher
-import co.tiagoaguiar.course.instagram.ui.interfaces.PhotoChanger
+import co.tiagoaguiar.course.instagram.core.commons.PhotoChanger
 import co.tiagoaguiar.course.instagram.ui.interfaces.User
 import java.lang.IllegalArgumentException
 
-class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User {
+class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), User {
 
     private var binding: FragSignUpNameBinding? = null
 
     private var signUpActivity: SignUpActivity? = null
+
+    private var photoChanger: PhotoChanger? = null
 
     private lateinit var presenter: SignUpNamePresenter
 
@@ -43,6 +45,13 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
 
     lateinit var createButton: LoadingButton
 
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        if (context is SignUpActivity) {
+            signUpActivity = context
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,9 +61,16 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
         val repo = DependencyInjector.createSignUpRepo()
         presenter = SignUpNamePresenter(this, repo)
 
-        binding!!.signUpImg.setOnClickListener {
-            val actv = activity as SignUpActivity
-            photoChangerDialog(actv, actv.fragId)
+        binding!!.signUpImg.apply {
+            val bitmapFromActv = signUpActivity?.photoInBitmap
+
+            if (bitmapFromActv != null) {
+                setImageBitmap(bitmapFromActv)
+            }
+            setOnClickListener {
+                val actv = activity as SignUpActivity
+                photoChanger?.photoChangerDialog(actv, actv.getContent, actv.getCamera, actv::getUri)
+            }
         }
 
         editName = binding!!.signUpEditName
@@ -96,16 +112,9 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
     override fun onDestroy() {
         binding = null
         signUpActivity = null
+        photoChanger = null
         presenter.onDestroy()
         super.onDestroy()
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        if (context is SignUpActivity) {
-            signUpActivity = context
-        }
     }
 
     fun onFailure(msg: String) {
@@ -113,6 +122,6 @@ class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), PhotoChanger, User 
     }
 
     fun onSuccCreation(name: String) {
-        signUpActivity?.goToWelcome(name)
+        signUpActivity?.goToMain()
     }
 }
