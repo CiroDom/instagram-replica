@@ -1,11 +1,9 @@
 package co.tiagoaguiar.course.instagram.ui.views.signup
 
-import android.content.Intent
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.ActivitySignUpBinding
@@ -13,9 +11,9 @@ import co.tiagoaguiar.course.instagram.ui.commons.CropperImgFrag
 import co.tiagoaguiar.course.instagram.ui.commons.Keys
 import co.tiagoaguiar.course.instagram.ui.interfaces.FragReplacer
 import co.tiagoaguiar.course.instagram.ui.interfaces.KeyboardHider
-import co.tiagoaguiar.course.instagram.ui.views.main.MainActivity
+import co.tiagoaguiar.course.instagram.core.commons.User
 
-class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer {
+class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer, User {
 
     private val binding by lazy {
         ActivitySignUpBinding.inflate(layoutInflater)
@@ -80,8 +78,6 @@ class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer {
     }
 
     fun goToMain() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(intent)
+        onUserAuth(this)
     }
 }

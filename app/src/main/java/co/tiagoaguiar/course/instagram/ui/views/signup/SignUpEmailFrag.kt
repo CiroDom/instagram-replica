@@ -11,7 +11,6 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResultListener
-import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.core.commons.DependencyInjector
 import co.tiagoaguiar.course.instagram.core.signup.presentation.SignUpEmailPresenter
 import co.tiagoaguiar.course.instagram.databinding.FragSignUpEmailBinding
@@ -19,7 +18,7 @@ import co.tiagoaguiar.course.instagram.ui.commons.Keys
 import co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
 import co.tiagoaguiar.course.instagram.ui.commons.OurTextWatcher
 import co.tiagoaguiar.course.instagram.core.commons.PhotoChanger
-import co.tiagoaguiar.course.instagram.ui.interfaces.User
+import co.tiagoaguiar.course.instagram.core.commons.User
 import de.hdodenhof.circleimageview.CircleImageView
 
 class SignUpEmailFrag : Fragment(), User {
@@ -110,4 +109,15 @@ class SignUpEmailFrag : Fragment(), User {
         Toast.makeText(requireContext(), msg, Toast.LENGTH_SHORT).show()
     }
 
+    fun onUpdateFail(msg: String) {
+
+    }
+
+    fun onUpdateSucc() {
+
+    }
+
+    fun onUpdateComplete() {
+        showProg(false, button)
+    }
 }

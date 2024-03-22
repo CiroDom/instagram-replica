@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.core.signup.models
 
+import android.net.Uri
 import co.tiagoaguiar.course.instagram.core.signup.presentation.SignUpCallback
 
 class SignUpRepository(
@@ -12,5 +13,9 @@ class SignUpRepository(
 
     fun create(email: String, passw: String, name: String, photo: ByteArray? = null, callback: SignUpCallback) {
         dataSource.create(email, passw, name, photo, callback)
+    }
+
+    fun updatePhoto(photoUri: Uri, callback: SignUpCallback) {
+        dataSource.updatePhoto(photoUri, callback)
     }
 }

@@ -1,4 +1,4 @@
-package co.tiagoaguiar.course.instagram.ui.interfaces
+package co.tiagoaguiar.course.instagram.core.commons
 
 import android.content.Context
 import android.content.Intent
@@ -8,8 +8,6 @@ import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
 import co.tiagoaguiar.course.instagram.ui.views.main.MainActivity
-import com.google.android.material.textfield.TextInputEditText
-import com.google.android.material.textfield.TextInputLayout
 
 interface User {
 

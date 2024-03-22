@@ -15,7 +15,7 @@ import co.tiagoaguiar.course.instagram.ui.commons.Keys
 import co.tiagoaguiar.course.instagram.ui.commons.LoadingButton
 import co.tiagoaguiar.course.instagram.ui.commons.OurTextWatcher
 import co.tiagoaguiar.course.instagram.core.commons.PhotoChanger
-import co.tiagoaguiar.course.instagram.ui.interfaces.User
+import co.tiagoaguiar.course.instagram.core.commons.User
 import java.lang.IllegalArgumentException
 
 class SignUpNameFrag : Fragment(R.layout.frag_sign_up_name), User {

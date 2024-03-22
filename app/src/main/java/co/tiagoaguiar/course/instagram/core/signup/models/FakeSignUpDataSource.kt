@@ -1,6 +1,8 @@
 package co.tiagoaguiar.course.instagram.core.signup.models
 
+import android.net.Uri
 import co.tiagoaguiar.course.instagram.core.commons.Database
+import co.tiagoaguiar.course.instagram.core.login.model.Photo
 import co.tiagoaguiar.course.instagram.core.login.model.UserAuth
 import co.tiagoaguiar.course.instagram.core.signup.presentation.SignUpCallback
 import java.util.UUID
@@ -35,6 +37,20 @@ class FakeSignUpDataSource {
         }
         else {
             callback.onFailure("Erro no servidor")
+        }
+
+        callback.onComplete()
+    }
+
+    fun updatePhoto(photoUri: Uri, callback: SignUpCallback) {
+        val userAuth = Database.sessionAuth
+
+        if (userAuth == null) {
+            callback.onFailure("Usuário não encontrado")
+        }
+        else {
+            val newPhoto = Photo(UUID.randomUUID().toString(), photoUri)
+            val wasPhotoCreated = Database.photos.add(newPhoto)
         }
 
         callback.onComplete()

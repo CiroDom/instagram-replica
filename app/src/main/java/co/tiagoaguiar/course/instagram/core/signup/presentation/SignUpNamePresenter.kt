@@ -6,7 +6,7 @@ import co.tiagoaguiar.course.instagram.core.signup.models.SignUpRepository
 import co.tiagoaguiar.course.instagram.ui.views.signup.SignUpNameFrag
 
 class SignUpNamePresenter(
-    private val view: SignUpNameFrag?,
+    private var view: SignUpNameFrag?,
     private val repository: SignUpRepository) : BasePresenter {
 
     fun create(email: String, name: String, passw: String, confirmPassw: String, photo: ByteArray? = null) {
@@ -15,24 +15,24 @@ class SignUpNamePresenter(
         val notEqualPassw = passw != confirmPassw
 
         if (notValidName) {
-            view?.displayFailure(R.string.invalid_name, view.editName)
+            view?.displayFailure(R.string.invalid_name, view!!.editName)
 
             return
         }
 
         if (tooShortPassw) {
-            view?.displayFailure(R.string.invalid_passw_short, view.editPassw)
+            view?.displayFailure(R.string.invalid_passw_short, view!!.editPassw)
 
             return
         }
 
         if (notEqualPassw) {
-            view?.displayFailure(R.string.password_not_equal, view.editConfirmPassw)
+            view?.displayFailure(R.string.password_not_equal, view!!.editConfirmPassw)
 
             return
         }
 
-        view?.showProg(true, view.createButton)
+        view?.showProg(true, view!!.createButton)
 
         repository.create(email, passw, name, photo, object : SignUpCallback {
             override fun onSucess() {
@@ -44,13 +44,13 @@ class SignUpNamePresenter(
             }
 
             override fun onComplete() {
-                view?.showProg(false, view.createButton)
+                view?.showProg(false, view!!.createButton)
             }
 
         })
     }
 
     override fun onDestroy() {
-
+        view = null
     }
 }

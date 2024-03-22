@@ -10,7 +10,7 @@ import co.tiagoaguiar.course.instagram.ui.commons.OurTextWatcher
 import co.tiagoaguiar.course.instagram.core.login.presentation.LoginPresenter
 import co.tiagoaguiar.course.instagram.databinding.ActivityLoginBinding
 import co.tiagoaguiar.course.instagram.ui.interfaces.KeyboardHider
-import co.tiagoaguiar.course.instagram.ui.interfaces.User
+import co.tiagoaguiar.course.instagram.core.commons.User
 import co.tiagoaguiar.course.instagram.ui.views.signup.SignUpActivity
 
 class LoginActivity : AppCompatActivity(), KeyboardHider, User {

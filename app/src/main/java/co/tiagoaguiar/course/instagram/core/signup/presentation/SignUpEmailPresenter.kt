@@ -1,5 +1,6 @@
 package co.tiagoaguiar.course.instagram.core.signup.presentation
 
+import android.net.Uri
 import android.util.Patterns
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.core.commons.BasePresenter
@@ -37,5 +38,24 @@ class SignUpEmailPresenter(
         else {
             view?.displayFailure(R.string.invalid_email, view!!.editEmail)
         }
+    }
+
+    fun updatePhoto(photoUri: Uri) {
+        view?.showProg(true, view!!.button)
+
+        repository.updatePhoto(photoUri, object : SignUpCallback {
+            override fun onSucess() {
+                view?.onUpdateSucc()
+            }
+
+            override fun onFailure(msg: String) {
+                view?.onUpdateFail(msg)
+            }
+
+            override fun onComplete() {
+                view?.onUpdateComplete()
+            }
+
+        })
     }
 }
