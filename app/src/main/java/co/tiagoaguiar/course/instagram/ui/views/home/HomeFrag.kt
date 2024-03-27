@@ -10,40 +10,29 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import co.tiagoaguiar.course.instagram.R
 import co.tiagoaguiar.course.instagram.databinding.FragHomeBinding
+import co.tiagoaguiar.course.instagram.ui.commons.BaseFrag
+import co.tiagoaguiar.course.instagram.ui.views.main.PostAdapter
 
-class HomeFrag : Fragment() {
+class HomeFrag : BaseFrag<FragHomeBinding, HomePresenter>(
+    FragHomeBinding::bind,
+    R.layout.frag_home
+) {
+    override var presenter: HomePresenter? = null
 
-    private val binding by lazy {
-        FragHomeBinding.inflate(layoutInflater)
+    override fun setupPresenter() {
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
+    override fun getMenu() : Int {
+        return R.menu.home_dot_menu
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val recyView = binding.homefragRecyview
-        with(recyView) {
+    override fun setupViews() {
+        val recyView = binding?.homefragRecyview
+        with(recyView!!) {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = PostHomeAdapter()
+            adapter = PostAdapter()
         }
-
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.profile_dot_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
 
 }

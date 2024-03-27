@@ -43,7 +43,7 @@ class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer, User {
         keyboardHiding(this, binding.root)
 
         val emailFrag = SignUpEmailFrag()
-        replaceFrag(this, emailFrag, fragId)
+        setFrag(this, emailFrag, fragId)
 
         binding.signUpTxtHasAlreadyAccount.setOnClickListener {
             finish()
@@ -56,7 +56,7 @@ class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer, User {
                 putParcelable(Keys.URI, uri)
             }
         }
-        replaceFrag(this, frag, R.id.sign_up_frag)
+        setFrag(this, frag, R.id.sign_up_frag)
     }
 
     fun getUri(uri: Uri) {
@@ -74,7 +74,7 @@ class SignUpActivity : AppCompatActivity(), KeyboardHider, FragReplacer, User {
         val nameFrag = SignUpNameFrag()
         nameFrag.arguments = bundle
 
-        replaceFrag(this, nameFrag, fragId)
+        setFrag(this, nameFrag, fragId)
     }
 
     fun goToMain() {

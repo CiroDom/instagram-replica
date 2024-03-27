@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        replaceFrag(this, currentFrag, R.id.main_frag)
+        setFrag(this, currentFrag, R.id.main_frag)
 
         val toolbar = binding.mainToolbar
         setSupportActionBar(toolbar)
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
         }
 
-        replaceFrag(this, currentFrag, R.id.main_frag)
+        setFrag(this, currentFrag, R.id.main_frag)
 
         setScrollToolbarEnabled(scrollToolbarEnabled)
 

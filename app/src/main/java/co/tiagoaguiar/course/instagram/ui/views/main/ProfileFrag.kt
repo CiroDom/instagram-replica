@@ -9,41 +9,34 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import co.tiagoaguiar.course.instagram.R
+import co.tiagoaguiar.course.instagram.core.commons.ProfilePresenter
 import co.tiagoaguiar.course.instagram.databinding.FragProfileBinding
+import co.tiagoaguiar.course.instagram.ui.commons.BaseFrag
 
-class ProfileFrag : Fragment() {
+class ProfileFrag : BaseFrag<FragProfileBinding, ProfilePresenter>(
+    FragProfileBinding::bind,
+    R.layout.frag_profile) {
 
-    private val binding by lazy {
-        FragProfileBinding.inflate(layoutInflater)
+    override lateinit var presenter: ProfilePresenter
+
+    override fun setupPresenter() {
+
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        return binding.root
+    override fun getMenu() : Int {
+        return R.menu.profile_dot_menu
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val recyView = binding.proffragRecyview
-        with(recyView) {
+    override fun setupViews() {
+        val recyView = binding?.proffragRecyview
+        with(recyView!!) {
             layoutManager = GridLayoutManager(requireContext(), 3)
             adapter = PostAdapter()
         }
 
+        presenter.apply {
+            fetchUserProfile()
+            fetchUserPosts()
+        }
     }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setHasOptionsMenu(true)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.profile_dot_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
-    }
-
 }
